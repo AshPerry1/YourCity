@@ -19,6 +19,117 @@
             min-height: 100vh;
         }
 
+        /* Enhanced color palette for better contrast */
+        .problem-section {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+        }
+
+        .opportunity-section {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+        }
+
+        .competitive-section {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
+        }
+
+        .solution-section {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%) !important;
+        }
+
+        .business-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+        }
+
+        .investment-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+
+        /* Enhanced text contrast */
+        .white-text {
+            color: white !important;
+        }
+
+        .white-text h2, .white-text h3, .white-text p {
+            color: white !important;
+        }
+
+        /* Hover effects for cards */
+        .feature-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card .hover-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .feature-card:hover .hover-content {
+            opacity: 1;
+        }
+
+        /* Enhanced animations */
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .slide-in {
+            animation: slideInFromBottom 0.8s ease-out;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Story flow indicators */
+        .story-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1001;
+        }
+
+        .story-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -372,90 +483,203 @@
         </div>
     </header>
 
+    <!-- Story Progress Bar -->
+    <div class="story-progress">
+        <div class="story-progress-bar" id="progressBar"></div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="fade-in">Your City</h1>
-            <p class="fade-in">Solving the Local Community Crisis</p>
-            <p class="fade-in">In an era of digital isolation, Your City bridges the gap between technology and authentic local connections.</p>
-            <a href="#problem" class="cta-button fade-in">See the Problem</a>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h1 class="fade-in pulse">Your City</h1>
+                <p class="fade-in" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Any community, just connect</p>
+                <p class="fade-in" style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">Your City is a platform that connects neighbors, supports local businesses, and creates authentic community bonds. We have everything you need to make your city feel like home.</p>
+                <div class="fade-in" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                        <span style="font-size: 0.9rem; opacity: 0.8;">SwiftUI Native</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                        <span style="font-size: 0.9rem; opacity: 0.8;">iOS 26.0+</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Apple-Quality UX</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- App Mockup -->
+            <div class="fade-in" style="position: relative; max-width: 300px; margin: 0 auto;">
+                <div style="width: 100%; height: 500px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <div style="position: absolute; top: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; backdrop-filter: blur(10px);">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%;"></div>
+                            <div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.6); border-radius: 4px; width: 60px; margin-bottom: 4px;"></div>
+                                <div style="height: 6px; background: rgba(255,255,255,0.4); border-radius: 3px; width: 40px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Cards -->
+                    <div style="position: absolute; top: 100px; right: -20px; background: white; border-radius: 12px; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: rotate(5deg);">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: #333;">🏠 Dynamic Feed</div>
+                    </div>
+                    
+                    <div style="position: absolute; bottom: 120px; left: -15px; background: white; border-radius: 12px; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: rotate(-3deg);">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: #333;">🗺️ Proximity Pulse</div>
+                    </div>
+                    
+                    <div style="position: absolute; bottom: 80px; right: -10px; background: white; border-radius: 12px; padding: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: rotate(2deg);">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: #333;">🤖 Scout AI</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Problem Statement -->
-    <section id="problem" class="features" style="background: #e74c3c; color: white;">
+    <section id="problem" class="features problem-section white-text">
         <div class="container">
-            <h2 class="section-title" style="color: white;">The Problem We're Solving</h2>
+            <h2 class="section-title slide-in">The Problem: We're More Connected Than Ever, Yet More Alone</h2>
             <div class="features-grid">
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <div class="feature-icon">🏠</div>
                     <h3>Digital Isolation</h3>
-                    <p>People are more connected globally but disconnected locally. 67% of Americans don't know their neighbors, leading to loneliness and missed opportunities.</p>
+                    <p>67% of Americans don't know their neighbors</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Digital Isolation Crisis</h4>
+                            <p>While we're connected globally, we're disconnected locally. People are lonely, missing community support, and losing the sense of belonging that makes a city feel like home.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <div class="feature-icon">💸</div>
                     <h3>Local Business Struggles</h3>
-                    <p>Small businesses struggle to compete with big tech. 43% of local businesses lack digital presence, missing out on local customers.</p>
+                    <p>43% of local businesses lack digital presence</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Small Business Crisis</h4>
+                            <p>Local businesses can't compete with big tech. They're losing customers, struggling to be discovered, and missing the digital transformation that could save them.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <div class="feature-icon">🎯</div>
                     <h3>Fragmented Solutions</h3>
-                    <p>Existing apps are siloed - separate apps for events, marketplace, jobs, and social. Users need to juggle multiple platforms.</p>
+                    <p>Users juggle 5+ apps for local needs</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>App Fatigue</h4>
+                            <p>People need separate apps for events, marketplace, jobs, social, and local info. It's overwhelming and creates friction that prevents real community engagement.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <div class="feature-icon">📱</div>
                     <h3>Poor User Experience</h3>
-                    <p>Current local apps are outdated, clunky, and don't understand modern user expectations. They lack the polish and functionality users demand.</p>
+                    <p>Current local apps are outdated and clunky</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>UX Crisis</h4>
+                            <p>Local apps look like they were built in 2010. Users expect Apple-quality experiences but get stuck with outdated, confusing interfaces that drive them away.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Market Opportunity -->
-    <section class="features" style="background: #27ae60; color: white;">
+    <section class="features opportunity-section white-text">
         <div class="container">
-            <h2 class="section-title" style="color: white;">The Market Opportunity</h2>
+            <h2 class="section-title slide-in">The Opportunity: A $47B Market Waiting to Be Captured</h2>
             <div class="features-grid">
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <h3>📊 Market Size</h3>
-                    <p><strong>$47B</strong> Local Commerce Market<br>
-                    <strong>2.8B</strong> Smartphone Users<br>
-                    <strong>85%</strong> Want More Local Connection<br>
-                    <strong>$12B</strong> Local Events Market</p>
+                    <p><strong>$47B</strong> Local Commerce Market</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Massive Market</h4>
+                            <p>The local commerce market is exploding. People want to support local businesses, but they need better ways to discover and connect with them. This is a $47 billion opportunity just waiting for the right solution.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <h3>🎯 Target Demographics</h3>
-                    <p><strong>18-45</strong> Age Range<br>
-                    <strong>Urban/Suburban</strong> Areas<br>
-                    <strong>Community-minded</strong> Individuals<br>
-                    <strong>Local business</strong> Owners</p>
+                    <p><strong>2.8B</strong> Smartphone Users</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Perfect Audience</h4>
+                            <p>18-45 year olds in urban/suburban areas who are community-minded and want to support local businesses. These people are already on their phones - they just need the right app.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <h3>💡 Growth Drivers</h3>
-                    <p><strong>Post-pandemic</strong> Local focus<br>
-                    <strong>Digital transformation</strong> of local commerce<br>
-                    <strong>Community building</strong> trends<br>
-                    <strong>Mobile-first</strong> consumer behavior</p>
+                    <p><strong>85%</strong> Want More Local Connection</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Perfect Timing</h4>
+                            <p>Post-pandemic, people are craving local connections. Digital transformation is accelerating. Community building is trending. Mobile-first behavior is universal. The timing couldn't be better.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-card fade-in" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <div class="feature-card fade-in slide-in">
                     <h3>🚀 Competitive Advantage</h3>
-                    <p><strong>First-mover</strong> in unified local platform<br>
-                    <strong>Apple-quality</strong> user experience<br>
-                    <strong>AI-powered</strong> personalization<br>
-                    <strong>Gamified</strong> engagement</p>
+                    <p><strong>First-mover</strong> in unified platform</p>
+                    <div class="hover-content">
+                        <div>
+                            <h4>Unique Position</h4>
+                            <p>No one has built a unified local platform with Apple-quality UX, AI integration, and gamification. We're the first to combine all these elements into one seamless experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="features" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Currently Serving</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in slide-in" style="text-align: center; background: white;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem;">📍</div>
+                    <h3>Birmingham, AL</h3>
+                    <p>Launch city with dynamic navigation & glass morphism</p>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="text-align: center; background: white;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem;">📍</div>
+                    <h3>Chattanooga, TN</h3>
+                    <p>Proximity pulse with glow animations</p>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="text-align: center; background: white;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem;">📍</div>
+                    <h3>Nashville, TN</h3>
+                    <p>Scout AI local knowledge integration</p>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="text-align: center; background: white;">
+                    <div class="feature-icon" style="margin: 0 auto 1rem;">📍</div>
+                    <h3>Atlanta, GA</h3>
+                    <p>Marketplace swipe card interactions</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- User Journey -->
-    <section class="features" style="background: #f8f9fa;">
+    <section class="features" style="background: white;">
         <div class="container">
             <h2 class="section-title">The Your City Experience</h2>
             <div class="features-grid">
@@ -635,6 +859,61 @@
                     <div class="feature-icon">📞</div>
                     <h3>Communication</h3>
                     <p>Real-time messaging, notifications, community alerts, and integrated communication tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Pulse Highlight Section -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="fade-in slide-in" style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                <h2 class="fade-in slide-in" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Introducing City Pulse</h2>
+                <p class="fade-in slide-in" style="font-size: 1.2rem; opacity: 0.9;">Our revolutionary new feature that transforms how communities connect</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in slide-in" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-Time Activity</h3>
+                    <p>See what's happening in your city right now with live updates and trending topics</p>
+                    <div class="hover-content">
+                        <p>City Pulse provides real-time insights into local activity, from trending topics to live events. Get instant notifications about what's happening in your neighborhood and stay connected to your community's pulse.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Filtering</h3>
+                    <p>Filter by proximity, interests, and activity type to find exactly what matters to you</p>
+                    <div class="hover-content">
+                        <p>Our intelligent filtering system lets you customize your City Pulse experience. Filter by distance, interests, activity type, or time to see only the content that's most relevant to your lifestyle and preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Community Connection</h3>
+                    <p>Connect with neighbors, local businesses, and community leaders in real-time</p>
+                    <div class="hover-content">
+                        <p>City Pulse creates instant connections between neighbors, local businesses, and community leaders. Share updates, ask questions, and build relationships with the people who make your city special.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track engagement, trends, and community health with detailed insights</p>
+                    <div class="hover-content">
+                        <p>Monitor your community's health and engagement with our comprehensive analytics dashboard. Track trending topics, user engagement, and community growth to understand what drives local connection.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="fade-in slide-in" style="background: rgba(255,255,255,0.2); padding: 1rem 2rem; border-radius: 8px; display: inline-block;">
+                    <span style="font-weight: bold; font-size: 1.1rem;">🚀 Coming Soon to Birmingham & Chattanooga</span>
                 </div>
             </div>
         </div>
@@ -1004,6 +1283,38 @@
         </div>
     </section>
 
+    <!-- Social Proof -->
+    <section class="features" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Community Reviews</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in slide-in" style="background: white;">
+                    <h3>🏠 "The dynamic navigation is so smooth!"</h3>
+                    <p>"The way the navigation bar shrinks and expands as you scroll is just like Apple Podcasts. The glass morphism effects make it feel so premium and modern."</p>
+                    <div style="margin-top: 1rem; font-weight: 600; color: #666;">Sarah M. • Birmingham</div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: white;">
+                    <h3>🗺️ "Proximity pulse is mesmerizing"</h3>
+                    <p>"The glow animations and real-time distance calculations are incredible. I can see exactly who's nearby and the visual feedback is so intuitive!"</p>
+                    <div style="margin-top: 1rem; font-weight: 600; color: #666;">Mike R. • Chattanooga</div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: white;">
+                    <h3>🤖 "Scout knows everything about my city"</h3>
+                    <p>"Scout AI has city-specific knowledge that's incredibly accurate. It's like having a local expert who knows all the hidden gems and can answer any question about my area."</p>
+                    <div style="margin-top: 1rem; font-weight: 600; color: #666;">Jennifer L. • Nashville</div>
+                </div>
+                
+                <div class="feature-card fade-in slide-in" style="background: white;">
+                    <h3>🛒 "Marketplace swipe cards are addictive"</h3>
+                    <p>"The swipe interactions with haptic feedback are so satisfying. Save or dismiss items with natural gestures - it's like Tinder but for local deals!"</p>
+                    <div style="margin-top: 1rem; font-weight: 600; color: #666;">David K. • Atlanta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Advanced Features -->
     <section class="features">
         <div class="container">
@@ -1128,15 +1439,254 @@
         </div>
     </section>
 
+    <!-- Service List -->
+    <section class="features" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Everything Your City Offers</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🏠 Dynamic Navigation</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🗺️ Proximity Pulse</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🤖 Scout AI Assistant</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🛒 Swipe Marketplace</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">💬 Three-Section Feed</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎨 Glass Morphism</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">💼 Job Place</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🏆 Gamification System</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">👮 Role-Based Access</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🔐 User Verification</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📊 Real-Time Analytics</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎪 AR Integration</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📱 City Pulse</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎯 Quick Actions</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🌤️ Weather & Alerts</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📰 Local News</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🔥 Trending Topics</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎪 Community Events</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">👥 Network Reviews</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🏢 Business Profiles</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📝 Review System</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎨 Design System</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🔔 Smart Notifications</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🛡️ Privacy Controls</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📊 Admin Dashboard</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🏪 Business Dashboard</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">👮 Moderator Dashboard</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎯 Campaign Creation</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🏆 Leaderboards</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🎁 Rewards System</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">📱 Tutorial System</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">🔍 Search & Discovery</h4>
+                </div>
+                <div class="fade-in slide-in" style="padding: 1rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+                    <h4 style="margin: 0; color: #333;">💬 Communication Hub</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-10 Year Growth Roadmap -->
+    <section style="background: #f8f9fa; padding: 4rem 2rem;">
+        <div class="container">
+            <h2 class="fade-in slide-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; font-weight: 700; color: #333;">5-10 Year Growth Roadmap</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                
+                <!-- Year 1-2: MVP & Testing -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #3498db;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #3498db; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">1-2</div>
+                        <h3 style="margin: 0; color: #333;">MVP Development & Testing</h3>
+                    </div>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>Complete SwiftUI iOS app development</li>
+                        <li>Beta testing with 100+ users in Birmingham</li>
+                        <li>Refine core features based on user feedback</li>
+                        <li>Establish partnerships with local businesses</li>
+                        <li>Launch official version 1.0</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #e3f2fd; border-radius: 4px;">
+                        <strong>Target:</strong> 1,000 active users in Birmingham
+                    </div>
+                </div>
+                
+                <!-- Year 3: Regional Expansion -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #27ae60;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #27ae60; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">3</div>
+                        <h3 style="margin: 0; color: #333;">Regional Expansion</h3>
+                    </div>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>Launch in Chattanooga, Nashville, Atlanta</li>
+                        <li>Develop city-specific AI knowledge bases</li>
+                        <li>Implement advanced analytics dashboard</li>
+                        <li>Establish business partnerships program</li>
+                        <li>Introduce premium subscription tiers</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #e8f5e8; border-radius: 4px;">
+                        <strong>Target:</strong> 10,000 active users across 4 cities
+                    </div>
+                </div>
+                
+                <!-- Year 4-5: Southeast Expansion -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #f39c12;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #f39c12; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">4-5</div>
+                        <h3 style="margin: 0; color: #333;">Southeast Regional Growth</h3>
+                    </div>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>Expand to 15+ cities across Southeast</li>
+                        <li>Launch Android version</li>
+                        <li>Implement AR features for local discovery</li>
+                        <li>Develop enterprise solutions for cities</li>
+                        <li>Establish data partnerships</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #fff3e0; border-radius: 4px;">
+                        <strong>Target:</strong> 100,000 active users across Southeast
+                    </div>
+                </div>
+                
+                <!-- Year 6-7: National Expansion -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #e74c3c;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #e74c3c; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">6-7</div>
+                        <h3 style="margin: 0; color: #333;">National Market Entry</h3>
+                    </div>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>Launch in 50+ major metropolitan areas</li>
+                        <li>Develop web platform for desktop users</li>
+                        <li>Implement advanced AI personalization</li>
+                        <li>Establish government partnerships</li>
+                        <li>Introduce international expansion strategy</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #ffebee; border-radius: 4px;">
+                        <strong>Target:</strong> 1M+ active users nationwide
+                    </div>
+                </div>
+                
+                <!-- Year 8-10: Market Leadership -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #9b59b6;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #9b59b6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">8-10</div>
+                        <h3 style="margin: 0; color: #333;">Market Leadership & Innovation</h3>
+                    </div>
+                    <ul style="color: #666; line-height: 1.6;">
+                        <li>500+ cities across United States</li>
+                        <li>International expansion (Canada, UK, Australia)</li>
+                        <li>Advanced AI and machine learning features</li>
+                        <li>Strategic acquisitions and partnerships</li>
+                        <li>IPO or strategic exit opportunities</li>
+                    </ul>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #f3e5f5; border-radius: 4px;">
+                        <strong>Target:</strong> 10M+ active users globally
+                    </div>
+                </div>
+                
+                <!-- Financial Projections -->
+                <div class="feature-card fade-in slide-in" style="background: white; border-left: 4px solid #34495e; grid-column: 1 / -1;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="background: #34495e; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem;">💰</div>
+                        <h3 style="margin: 0; color: #333;">Revenue Projections</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #3498db;">Year 3</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #333;">$500K</div>
+                            <div style="color: #666; font-size: 0.9rem;">Annual Revenue</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #27ae60;">Year 5</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #333;">$5M</div>
+                            <div style="color: #666; font-size: 0.9rem;">Annual Revenue</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #f39c12;">Year 7</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #333;">$50M</div>
+                            <div style="color: #666; font-size: 0.9rem;">Annual Revenue</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #e74c3c;">Year 10</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: #333;">$200M+</div>
+                            <div style="color: #666; font-size: 0.9rem;">Annual Revenue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="hero" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
         <div class="container">
             <h2 class="fade-in" style="font-size: 2.5rem;">Ready to Transform Local Communities?</h2>
             <p class="fade-in" style="font-size: 1.2rem;">Join us in building the future of local connection</p>
             <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-                <a href="#contact" class="cta-button fade-in" style="background: white; color: #27ae60;">Contact Us</a>
-                <a href="#demo" class="cta-button fade-in" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Request Demo</a>
+                <a href="mailto:adperry18@gmail.com" class="cta-button fade-in" style="background: white; color: #27ae60;">Contact Ash Perry</a>
+                <a href="mailto:adperry18@gmail.com?subject=Your City Demo Request" class="cta-button fade-in" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Request Demo</a>
             </div>
+            <p class="fade-in" style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Ash Perry • adperry18@gmail.com</p>
         </div>
     </section>
 
@@ -1148,6 +1698,16 @@
     </footer>
 
     <script>
+        // Story progress bar
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateProgressBar);
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1158,7 +1718,7 @@
             });
         });
 
-        // Intersection Observer for fade-in animations
+        // Enhanced Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1168,12 +1728,15 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
+                    if (entry.target.classList.contains('slide-in')) {
+                        entry.target.style.animationDelay = '0.2s';
+                    }
                 }
             });
         }, observerOptions);
 
-        // Observe all elements that should fade in
-        document.querySelectorAll('.feature-card, .screenshot, .persona-card, .stat-item').forEach(el => {
+        // Observe all elements that should animate
+        document.querySelectorAll('.feature-card, .screenshot, .persona-card, .stat-item, .slide-in').forEach(el => {
             observer.observe(el);
         });
 
@@ -1183,7 +1746,40 @@
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             });
+            
+            // Initialize progress bar
+            updateProgressBar();
         });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Story flow indicators
+        const sections = document.querySelectorAll('section');
+        let currentSection = 0;
+
+        function updateStoryProgress() {
+            const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = index;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateStoryProgress);
     </script>
 </body>
 </html> 
