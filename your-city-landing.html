@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your City - The Future of Local Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* App Screenshots */
+        .screenshots {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .screenshot img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .screenshot h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Design System */
+        .design-system {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .color-swatch {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .color-swatch.primary { background: #3498db; }
+        .color-swatch.success { background: #27ae60; }
+        .color-swatch.warning { background: #f39c12; }
+        .color-swatch.danger { background: #e74c3c; }
+        .color-swatch.purple { background: #9b59b6; }
+
+        /* Persona Section */
+        .persona {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .persona-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .persona h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .persona-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a252f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Your City</div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#screenshots">Screenshots</a>
+                    <a href="#design">Design</a>
+                    <a href="#persona">Persona</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Your City</h1>
+            <p class="fade-in">The Future of Local Community Connection</p>
+            <p class="fade-in">A comprehensive iOS app that transforms how people discover, connect, and engage with their local community.</p>
+            <a href="#features" class="cta-button fade-in">Explore Features</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Core Features</h2>
+            <div class="features-grid">
+                <!-- Core Features -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Smart Home Feed</h3>
+                    <p>Dynamic navigation bar that shrinks/expands on scroll, static gradient background, weather alerts, emergency banners, local news, trending topics, daily quizzes, community highlights, and pulse icon with glass effect.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Interactive Map</h3>
+                    <p>Real-time location services, animated map markers, business reviews, proximity pulse with glow animations, AR integration, and nearby review places discovery.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>Community Feed</h3>
+                    <p>Three-section structure: main community posts, swipe-up network reviews, and community events. Moderated content with role-based access control and post management.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Marketplace</h3>
+                    <p>Buy/Sell/Trade/Donate sections, grid and swipe card views, item categories, seller profiles, condition ratings, and secure local transactions.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Events & Activities</h3>
+                    <p>Local event discovery, event creation, attendee tracking, event categories, calendar integration, and community event highlights.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Assistant (Scout)</h3>
+                    <p>Local AI guide with city-specific knowledge, question answering, recommendations, and personalized assistance for community navigation.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💼</div>
+                    <h3>Job Marketplace</h3>
+                    <p>Local job opportunities, business profiles, real-time chat, application tracking, job categories, and professional networking features.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Gamification System</h3>
+                    <p>Points system, badges, leaderboards, rewards, achievement tracking, and community engagement incentives.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👥</div>
+                    <h3>Social Networking</h3>
+                    <p>User profiles, connections, reviews, community building, privacy controls, and verified user system.</p>
+                </div>
+                
+                <!-- Additional Features -->
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Authentication System</h3>
+                    <p>Login, signup, forgot password, user verification, profile management, and secure logout functionality.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Admin Dashboard</h3>
+                    <p>User management, content moderation, analytics, system monitoring, and administrative controls for community oversight.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Business Dashboard</h3>
+                    <p>Business profile management, job posting, analytics, customer reviews, and business-specific features.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👮</div>
+                    <h3>Moderator Dashboard</h3>
+                    <p>Content moderation, post approval, user management, community guidelines enforcement, and moderation tools.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>Profile Management</h3>
+                    <p>User profiles, statistics cards, connections, quick actions, logout functionality, and personal data management.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Rewards System</h3>
+                    <p>Points tracking, reward redemption, achievement badges, leaderboards, and gamified community engagement.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📰</div>
+                    <h3>News & Updates</h3>
+                    <p>Local news integration, trending topics, community highlights, and real-time information sharing.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Search & Discovery</h3>
+                    <p>Local business search, place reviews, nearby discovery, and location-based recommendations.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📞</div>
+                    <h3>Communication</h3>
+                    <p>Real-time messaging, notifications, community alerts, and integrated communication tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title">App Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Home Feed</div>
+                    <h4>Dynamic Home Feed</h4>
+                    <p>Personalized content with weather, news, and community updates</p>
+                </div>
+                
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(45deg, #3498db, #2980b9); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Map View</div>
+                    <h4>Interactive Map</h4>
+                    <p>Location-based services and business discovery</p>
+                </div>
+                
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(45deg, #27ae60, #2ecc71); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Community Feed</div>
+                    <h4>Community Posts</h4>
+                    <p>Three-section feed with reviews and events</p>
+                </div>
+                
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(45deg, #e74c3c, #c0392b); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Marketplace</div>
+                    <h4>Local Marketplace</h4>
+                    <p>Buy, sell, trade, and donate locally</p>
+                </div>
+                
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(45deg, #9b59b6, #8e44ad); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Events</div>
+                    <h4>Local Events</h4>
+                    <p>Discover and create community events</p>
+                </div>
+                
+                <div class="screenshot fade-in">
+                    <div style="width: 200px; height: 400px; background: linear-gradient(45deg, #f39c12, #e67e22); border-radius: 15px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">AI Assistant</div>
+                    <h4>Scout AI</h4>
+                    <p>Your local AI guide and assistant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design System Section -->
+    <section id="design" class="design-system">
+        <div class="container">
+            <h2 class="section-title">Design System</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3>Typography</h3>
+                    <p><strong>Large Title:</strong> 34pt, Bold<br>
+                    <strong>Title 2:</strong> 22pt, Semibold<br>
+                    <strong>Headline:</strong> 17pt, Semibold<br>
+                    <strong>Body:</strong> 17pt, Regular<br>
+                    <strong>Caption:</strong> 12pt, Regular</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>Color Palette</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch primary">Primary Blue<br>#3498db</div>
+                        <div class="color-swatch success">Success Green<br>#27ae60</div>
+                        <div class="color-swatch warning">Warning Gold<br>#f39c12</div>
+                        <div class="color-swatch danger">Danger Red<br>#e74c3c</div>
+                        <div class="color-swatch purple">Purple<br>#9b59b6</div>
+                    </div>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>Spacing System</h3>
+                    <p><strong>XS:</strong> 4px<br>
+                    <strong>SM:</strong> 8px<br>
+                    <strong>MD:</strong> 16px<br>
+                    <strong>LG:</strong> 24px<br>
+                    <strong>XL:</strong> 32px<br>
+                    <strong>XXL:</strong> 48px</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>Corner Radius</h3>
+                    <p><strong>SM:</strong> 8px<br>
+                    <strong>MD:</strong> 12px<br>
+                    <strong>LG:</strong> 16px<br>
+                    <strong>XL:</strong> 20px<br>
+                    <strong>XXL:</strong> 24px</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Persona Section -->
+    <section id="persona" class="persona">
+        <div class="container">
+            <div class="persona-content">
+                <h2>Meet Jay - Your City's Persona</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">The embodiment of what Your City represents</p>
+                
+                <div class="persona-grid">
+                    <div class="persona-card fade-in">
+                        <h3>👤 Identity</h3>
+                        <p><strong>Name:</strong> Jay (Just Around You)<br>
+                        <strong>Age:</strong> 29<br>
+                        <strong>Location:</strong> Mid-sized city like Birmingham<br>
+                        <strong>Role:</strong> Community Connector & Tech Consultant</p>
+                    </div>
+                    
+                    <div class="persona-card fade-in">
+                        <h3>🌟 Personality</h3>
+                        <p><strong>Friendly Leader:</strong> Knows the neighborhood like the back of their hand<br>
+                        <strong>Smart & Techy:</strong> Loves innovation and automation<br>
+                        <strong>Streetwise:</strong> Understands real community needs<br>
+                        <strong>Gamified:</strong> Turns interactions into rewarding experiences</p>
+                    </div>
+                    
+                    <div class="persona-card fade-in">
+                        <h3>🎨 Style & Aesthetic</h3>
+                        <p><strong>Wardrobe:</strong> Clean city-core style<br>
+                        <strong>Colors:</strong> Fresh white base with pops of green, red, and blue<br>
+                        <strong>Tone:</strong> Conversational, confident, and witty<br>
+                        <strong>Vibe:</strong> Someone you want to help you explore</p>
+                    </div>
+                    
+                    <div class="persona-card fade-in">
+                        <h3>💬 Voice</h3>
+                        <p>"Hey, I've got your back. Whether you're looking to help out, chill with friends, make some extra cash, or just explore what's going on — I'll help you get it done, right here in your city."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="features" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3>🛠️ Development Stack</h3>
+                    <p><strong>Framework:</strong> SwiftUI 100% Native<br>
+                    <strong>Language:</strong> Swift 5<br>
+                    <strong>Platform:</strong> iOS 26.0+<br>
+                    <strong>Architecture:</strong> MVVM Pattern<br>
+                    <strong>State Management:</strong> @StateObject, @ObservedObject</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>📱 Core Components</h3>
+                    <p><strong>Views:</strong> 25+ SwiftUI Views<br>
+                    <strong>Models:</strong> Comprehensive data models<br>
+                    <strong>Services:</strong> AI, Location, User Management<br>
+                    <strong>Managers:</strong> Community, City Stats, Map Data</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🎨 Design System</h3>
+                    <p><strong>Typography:</strong> 6 font sizes, 3 weights<br>
+                    <strong>Colors:</strong> 12 brand colors + gradients<br>
+                    <strong>Spacing:</strong> 6 standardized values<br>
+                    <strong>Shadows:</strong> 4 shadow types<br>
+                    <strong>Corners:</strong> 5 radius values</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🔧 Key Features</h3>
+                    <p><strong>Authentication:</strong> Complete login/signup flow<br>
+                    <strong>Navigation:</strong> Tab-based with modal presentations<br>
+                    <strong>Animations:</strong> Smooth transitions and effects<br>
+                    <strong>Haptics:</strong> Tactile feedback integration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Roles Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">User Roles & Permissions</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👤</div>
+                    <h3>Regular User</h3>
+                    <p>• Browse community feed<br>• Post and interact<br>• Use marketplace<br>• Attend events<br>• Earn points and badges<br>• Connect with others</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Business User</h3>
+                    <p>• Business profile management<br>• Job posting capabilities<br>• Customer review responses<br>• Business analytics<br>• Promotional features</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👮</div>
+                    <h3>Moderator</h3>
+                    <p>• Content moderation<br>• Post approval/rejection<br>• User management<br>• Community guidelines enforcement<br>• Report handling</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Admin</h3>
+                    <p>• System-wide management<br>• User role assignment<br>• Analytics and reporting<br>• System configuration<br>• Full administrative control</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Key Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <h3>25+</h3>
+                    <p>SwiftUI Views</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>4</h3>
+                    <p>User Roles</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>100%</h3>
+                    <p>SwiftUI Native</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>∞</h3>
+                    <p>Community Potential</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>12</h3>
+                    <p>Brand Colors</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>6</h3>
+                    <p>Typography Levels</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Models & Services -->
+    <section class="features" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Data Models & Services</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3>👤 User Models</h3>
+                    <p><strong>UserManager:</strong> Authentication, profile management<br>
+                    <strong>UserConnection:</strong> Social networking<br>
+                    <strong>ReviewConnection:</strong> Business reviews<br>
+                    <strong>CommunityPost:</strong> User-generated content<br>
+                    <strong>ModerationPost:</strong> Content moderation</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🏢 Business Models</h3>
+                    <p><strong>GooglePlace:</strong> Business information<br>
+                    <strong>MarketplaceItem:</strong> Buy/sell/trade items<br>
+                    <strong>Event:</strong> Community events<br>
+                    <strong>JobPosting:</strong> Employment opportunities<br>
+                    <strong>BusinessProfile:</strong> Business management</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🤖 AI & Services</h3>
+                    <p><strong>AIService:</strong> Scout AI assistant<br>
+                    <strong>GooglePlacesService:</strong> Location data<br>
+                    <strong>LocationManager:</strong> GPS and location<br>
+                    <strong>CommunityPostManager:</strong> Content management<br>
+                    <strong>CityStatsManager:</strong> Analytics</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🎮 Gamification</h3>
+                    <p><strong>GamificationSystem:</strong> Points and rewards<br>
+                    <strong>Badge:</strong> Achievement system<br>
+                    <strong>Leaderboard:</strong> Community rankings<br>
+                    <strong>Rewards:</strong> Redemption system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Advanced Features</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3>🎯 Dynamic Navigation</h3>
+                    <p>Collapsible navigation bar that shrinks and expands on scroll, similar to Apple Podcasts app, with smooth animations and responsive design.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>💫 Proximity Pulse</h3>
+                    <p>Animated proximity detection with glow effects, real-time distance calculations, and visual feedback for nearby connections.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🔄 Swipe Interactions</h3>
+                    <p>Marketplace swipe cards with save/dismiss gestures, haptic feedback, and smooth animations for intuitive user experience.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🎨 Glass Morphism</h3>
+                    <p>Modern UI with glass effects, blur backgrounds, and translucent elements for a premium, Apple-inspired design aesthetic.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>📊 Real-time Analytics</h3>
+                    <p>Live community statistics, user engagement metrics, and dynamic leaderboards with real-time updates.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🔔 Smart Notifications</h3>
+                    <p>Contextual alerts for weather, emergencies, local news, community events, and personalized recommendations.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🎪 AR Integration</h3>
+                    <p>Augmented reality features for enhanced location-based experiences and interactive community elements.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <h3>🔐 Privacy Controls</h3>
+                    <p>Granular privacy settings, data protection, and user-controlled sharing preferences for community safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Your City. Building stronger communities, one connection at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should fade in
+        document.querySelectorAll('.feature-card, .screenshot, .persona-card, .stat-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add fade-in class to hero elements on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.hero .fade-in').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html> 
